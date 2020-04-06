@@ -71,17 +71,17 @@ module Enumerable
   end
 
 # Defining my_count
-  def my_count(arg = nil)
+def my_count(arg = nil)
     count_val = 0
     my_each do |element|
-      count_val += 1 if ((block_given? && yield(element)) || element.poitive?(arg) || (!block_given? && !arg)
-  	end
+	  count_val += 1 if ((block_given? && yield(element)) || element.poitive?(arg) || (!block_given? && !arg)
+	end
     count_val
-  end
+end
 
 # Defining my_map
-  def my_map(proc_arg = nil)
-    return_arr = []
+def my_map(proc_arg = nil)
+	return_arr = []
     my_each_with_index do |element, index|
       if proc_arg
         return_arr.push(proc_arg.call(element))
@@ -93,11 +93,11 @@ module Enumerable
     end
     return return_arr unless !block_given? && !proc_arg
     return_arr.to_enum
-  end
+end
 
 # Defining my_inject
-  def my_inject(*args)
-    arr = to_a
+def my_inject(*args)
+	arr = to_a
     memo = args[0].is_a?(Symbol) ? arr[0] : args[0] || arr[0]
     symbol = identify_symbol(*args)
     pos = settle_start_position(*args)
@@ -106,7 +106,7 @@ module Enumerable
       pos += 1
     end
     memo
-  end
+end
 
 # Defining true?
 def true?(val = nil)
