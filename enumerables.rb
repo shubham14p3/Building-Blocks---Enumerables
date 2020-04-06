@@ -54,9 +54,16 @@ module Enumerable
     return_val
   end
   
-def my_none?	
+  def my_none?(arg = nil)
+    return_val = true
+    my_each do |element|
+      return_val = (block_given? && yield(element)) || (arg === element)
+      return_val = true?(element) if !block_given? && !arg
+      return false if return_val
+    end
+    true
+  end
 
-end
 
 def my_count	
 
