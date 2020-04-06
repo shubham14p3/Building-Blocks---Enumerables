@@ -35,3 +35,7 @@ end
 def my_inject	
 
 end
+
+def my_map	
+
+end
