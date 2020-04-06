@@ -85,7 +85,18 @@ module Enumerable
       end
     end
     return return_arr unless !block_given? && !proc_arg
+    return_arr.to_enum
+  end
 
-def my_inject	
-
+  def my_inject(*args)
+    arr = to_a
+    memo = args[0].is_a?(Symbol) ? arr[0] : args[0] || arr[0]
+    symbol = identify_symbol(*args)
+    pos = settle_start_position(*args)
+    while pos < count
+      memo = block_given? ? yield(memo, arr[pos]) : memo.send(symbol, arr[pos])
+      pos += 1
+    end
+    memo
+  end
 end
