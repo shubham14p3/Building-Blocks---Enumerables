@@ -19,3 +19,7 @@ end
 def my_any?
 
 end
+
+def my_none?	
+
+end
