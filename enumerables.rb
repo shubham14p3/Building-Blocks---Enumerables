@@ -112,4 +112,14 @@ def true?(val = nil)
 	start_pos = 0 if args[0] && !args[0].is_a?(Symbol)
 	start_pos
   end
+
+  def identify_symbol(*args)
+	sym = nil
+	if args.count == 2
+	  sym = args[1]
+	elsif args.count == 1
+	  sym = args[0] if args[0].is_a?(Symbol)
+	end
+	sym
+  end
   
