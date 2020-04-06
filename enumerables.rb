@@ -53,7 +53,7 @@ module Enumerable
     end
     return_val
   end
-  
+
   def my_none?(arg = nil)
     return_val = true
     my_each do |element|
@@ -65,9 +65,13 @@ module Enumerable
   end
 
 
-def my_count	
-
-end
+  def my_count(arg = nil)
+    count_val = 0
+    my_each do |element|
+      count_val += 1 if ((block_given? && yield(element)) || (element === arg)) || (!block_given? && !arg)
+    end
+    count_val
+  end
 
 def my_map	
 
