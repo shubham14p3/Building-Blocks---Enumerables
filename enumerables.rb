@@ -24,7 +24,10 @@ def my_none?
 
 end
 
-def my_count?	
+def my_count	
 
 end
 
+def my_map	
+
+end
