@@ -1,8 +1,15 @@
-module Enumerables
+module Enumerable
 	def my_each
-
+	  pos = 0
+	  return to_enum unless block_given?
+  
+	  loop do
+		break if pos >= length
+  
+		yield self[pos]
+		pos += 1
+	  end
 	end
-end
 
 def my_each_with_index
 
