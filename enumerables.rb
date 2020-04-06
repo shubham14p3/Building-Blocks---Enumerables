@@ -11,3 +11,7 @@ end
 def my_select
 
 end
+
+def my_all?
+
+end
