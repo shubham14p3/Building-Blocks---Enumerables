@@ -23,3 +23,8 @@ end
 def my_none?	
 
 end
+
+def my_count?	
+
+end
+
