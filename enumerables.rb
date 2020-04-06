@@ -106,3 +106,10 @@ def true?(val = nil)
   
 	true
   end
+
+  def settle_start_position(*args)
+	start_pos = 1
+	start_pos = 0 if args[0] && !args[0].is_a?(Symbol)
+	start_pos
+  end
+  
