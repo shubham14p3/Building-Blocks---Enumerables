@@ -73,8 +73,8 @@ module Enumerable
 # Defining my_count
 def my_count(arg = nil)
     count_val = 0
-    my_each do |element|
-	  count_val += 1 if ((block_given? && yield(element)) || element.poitive?(arg) || (!block_given? && !arg)
+	my_each do |element|
+		count_val += 1 if ((block_given? && yield(element)) || element.poitive?(arg) || (!block_given? && !arg)
 	end
     count_val
 end
@@ -111,7 +111,6 @@ end
 # Defining true?
 def true?(val = nil)
   return false if val.nil? || !val
-
   true
 end
 
