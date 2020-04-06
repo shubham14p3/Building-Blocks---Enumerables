@@ -123,3 +123,7 @@ def true?(val = nil)
 	sym
   end
   
+  def multiply_els(arr)
+	arr.my_inject(:*)
+  end
+  
