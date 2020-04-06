@@ -15,3 +15,7 @@ end
 def my_all?
 
 end
+
+def my_any?
+
+end
