@@ -1,37 +1,37 @@
 module Enumerable
-	def my_each
-	  pos = 0
-	  return to_enum unless block_given?
-  
-	  loop do
-		break if pos >= length
-  
-		yield self[pos]
-		pos += 1
-	  end
-	end
+  def my_each
+    pos = 0
+    return to_enum unless block_given?
 
-	def my_each_with_index
-		pos = 0
-		return to_enum unless block_given?
-	
-		loop do
-		  break if pos >= length
-	
-		  yield self[pos], pos
-		  pos += 1
-		end
-	  end
+    loop do
+      break if pos >= length
 
-	  def my_select
-		return_arr = []
-		return to_enum unless block_given?
-	
-		my_each do |element|
-		  return_arr.push(element) if yield element
-		end
-		return_arr
-	  end
+      yield self[pos]
+      pos += 1
+    end
+  end
+
+  def my_each_with_index
+    pos = 0
+    return to_enum unless block_given?
+
+    loop do
+      break if pos >= length
+
+      yield self[pos], pos
+      pos += 1
+    end
+  end
+
+  def my_select
+    return_arr = []
+    return to_enum unless block_given?
+
+    my_each do |element|
+      return_arr.push(element) if yield element
+    end
+    return_arr
+  end
 
   def my_all?(arg = nil)
     return_val = true
@@ -42,7 +42,6 @@ module Enumerable
     end
     return_val
   end
-
 
   def my_any?(arg = nil)
     return_val = false
@@ -64,7 +63,6 @@ module Enumerable
     true
   end
 
-
   def my_count(arg = nil)
     count_val = 0
     my_each do |element|
@@ -85,6 +83,7 @@ module Enumerable
       end
     end
     return return_arr unless !block_given? && !proc_arg
+
     return_arr.to_enum
   end
 
@@ -102,31 +101,31 @@ module Enumerable
 end
 
 def true?(val = nil)
-	return false if val.nil? || !val
-  
-	true
-  end
+  return false if val.nil? || !val
 
-  def settle_start_position(*args)
-	start_pos = 1
-	start_pos = 0 if args[0] && !args[0].is_a?(Symbol)
-	start_pos
-  end
+  true
+end
 
-  def identify_symbol(*args)
-	sym = nil
-	if args.count == 2
-	  sym = args[1]
-	elsif args.count == 1
-	  sym = args[0] if args[0].is_a?(Symbol)
-	end
-	sym
+def settle_start_position(*args)
+  start_pos = 1
+  start_pos = 0 if args[0] && !args[0].is_a?(Symbol)
+  start_pos
+end
+
+def identify_symbol(*args)
+  sym = nil
+  if args.count == 2
+    sym = args[1]
+  elsif args.count == 1
+    sym = args[0] if args[0].is_a?(Symbol)
   end
-  
-  def multiply_els(arr)
-	arr.my_inject(:*)
-  end
-  
-  # The following lines are used for showcasing multiply_els, not for debugging purposes
+  sym
+end
+
+def multiply_els(arr)
+  arr.my_inject(:*)
+end
+
+# The following lines are used for showcasing multiply_els, not for debugging purposes
 puts 'multiply_els [1, 2, 3, 4, 5]:'
 puts multiply_els([1, 2, 3, 4, 5])
