@@ -23,11 +23,15 @@ module Enumerable
 		end
 	  end
 
-end
-
-def my_select
-
-end
+	  def my_select
+		return_arr = []
+		return to_enum unless block_given?
+	
+		my_each do |element|
+		  return_arr.push(element) if yield element
+		end
+		return_arr
+	  end
 
 def my_all?
 
