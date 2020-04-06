@@ -1,5 +1,6 @@
 module Enumerable
-  def my_each
+	# Defining  my_each
+	def my_each
     pos = 0
     return to_enum unless block_given?
 
@@ -11,6 +12,7 @@ module Enumerable
     end
   end
 
+# Defining my_each_with_index
   def my_each_with_index
     pos = 0
     return to_enum unless block_given?
@@ -23,6 +25,8 @@ module Enumerable
     end
   end
 
+
+# Defining my_select
   def my_select
     return_arr = []
     return to_enum unless block_given?
@@ -33,44 +37,49 @@ module Enumerable
     return_arr
   end
 
+# Defining my_all
   def my_all?(arg = nil)
     return_val = true
     my_each do |element|
-      return_val = (block_given? && yield(element)) || (arg === element)
+      return_val = (block_given? && yield(element)) || element.poitive?(arg)
       return_val = true?(element) if !block_given? && !arg
       return false unless return_val
     end
     return_val
   end
 
+# Defining my_any?
   def my_any?(arg = nil)
     return_val = false
     my_each do |element|
-      return_val = (block_given? && yield(element)) || (arg === element)
+      return_val = (block_given? && yield(element)) || element.poitive?(arg)
       return_val = true?(element) if !block_given? && !arg
       return true if return_val
     end
     return_val
   end
 
+  # Defining my_none?
   def my_none?(arg = nil)
     return_val = true
     my_each do |element|
-      return_val = (block_given? && yield(element)) || (arg === element)
+      return_val = (block_given? && yield(element)) || element.poitive?(arg)
       return_val = true?(element) if !block_given? && !arg
       return false if return_val
     end
     true
   end
 
+# Defining my_count
   def my_count(arg = nil)
     count_val = 0
     my_each do |element|
-      count_val += 1 if ((block_given? && yield(element)) || (element === arg)) || (!block_given? && !arg)
-    end
+      count_val += 1 if ((block_given? && yield(element)) || element.poitive?(arg) || (!block_given? && !arg)
+  	end
     count_val
   end
 
+# Defining my_map
   def my_map(proc_arg = nil)
     return_arr = []
     my_each_with_index do |element, index|
@@ -83,10 +92,10 @@ module Enumerable
       end
     end
     return return_arr unless !block_given? && !proc_arg
-
     return_arr.to_enum
   end
 
+# Defining my_inject
   def my_inject(*args)
     arr = to_a
     memo = args[0].is_a?(Symbol) ? arr[0] : args[0] || arr[0]
@@ -98,20 +107,22 @@ module Enumerable
     end
     memo
   end
-end
 
+# Defining true?
 def true?(val = nil)
   return false if val.nil? || !val
 
   true
 end
 
+# Defining settle_start_position
 def settle_start_position(*args)
   start_pos = 1
   start_pos = 0 if args[0] && !args[0].is_a?(Symbol)
   start_pos
 end
 
+# Defining identify_symbol
 def identify_symbol(*args)
   sym = nil
   if args.count == 2
@@ -122,6 +133,7 @@ def identify_symbol(*args)
   sym
 end
 
+# Defining multiply_els
 def multiply_els(arr)
   arr.my_inject(:*)
 end
