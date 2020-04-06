@@ -32,10 +32,17 @@ module Enumerable
 		end
 		return_arr
 	  end
+	  
+  def my_all?(arg = nil)
+    return_val = true
+    my_each do |element|
+      return_val = (block_given? && yield(element)) || (arg === element)
+      return_val = true?(element) if !block_given? && !arg
+      return false unless return_val
+    end
+    return_val
+  end
 
-def my_all?
-
-end
 
 def my_any?
 
