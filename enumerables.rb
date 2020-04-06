@@ -73,14 +73,19 @@ module Enumerable
     count_val
   end
 
-def my_map	
-
-end
+  def my_map(proc_arg = nil)
+    return_arr = []
+    my_each_with_index do |element, index|
+      if proc_arg
+        return_arr.push(proc_arg.call(element))
+      elsif block_given?
+        return_arr.push(yield(element))
+      else
+        return_arr.push(index)
+      end
+    end
+    return return_arr unless !block_given? && !proc_arg
 
 def my_inject	
-
-end
-
-def my_map	
 
 end
