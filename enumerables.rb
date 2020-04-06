@@ -8,3 +8,6 @@ def my_each_with_index
 
 end
 
+def my_select
+
+end
