@@ -100,3 +100,9 @@ module Enumerable
     memo
   end
 end
+
+def true?(val = nil)
+	return false if val.nil? || !val
+  
+	true
+  end
