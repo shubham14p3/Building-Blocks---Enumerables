@@ -31,7 +31,12 @@ Style/DefWithParentheses:
   Enabled: false
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
-
+  Style/HashEachMethods:
+  Enabled: true
+Style/HashTransformValues:
+  Enabled: true
+Style/CaseEquality:
+  Enabled: false
 Layout/HashAlignment:
   EnforcedColonStyle: key
 Layout/ExtraSpacing:
