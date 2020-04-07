@@ -16,7 +16,7 @@ git clone https://github.com/shubham14p3/Building-Blocks---Enumerables.git
 
 ## Live Demo
 
-[Live Demo Link](https://github.com/shubham14p3/Building-Blocks---Enumerables.git/.)
+[Live Demo Link](https://shubham14p3.github.io/Building-Blocks---Enumerables/.)
 
 ## Authors
 
