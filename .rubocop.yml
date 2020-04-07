@@ -33,13 +33,10 @@ Style/FrozenStringLiteralComment:
   EnforcedStyle: never
   Style/HashEachMethods:
   Enabled: true
-
-Style/HashTransformKeys:
-  Enabled: true
-
 Style/HashTransformValues:
   Enabled: true
-
+Style/CaseEquality:
+  Enabled: false
 Layout/HashAlignment:
   EnforcedColonStyle: key
 Layout/ExtraSpacing:
