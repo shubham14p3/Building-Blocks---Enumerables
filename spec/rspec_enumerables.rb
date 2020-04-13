@@ -53,4 +53,36 @@ RSpec.describe 'Enumerable' do
     end
   end
 
+  describe '#my_select' do
+    it 'should return numbers greater than 5 on [1, 2, 3, 4, 5, 6]' do
+      expect(
+        numeric_arr.my_select do |el|
+          el > 5
+        end
+      ).to eql([6])
+    end
+
+    it 'should return an empty array when called on an empty array' do
+      expect(
+        [].my_select do |_el|
+          true
+        end
+      ).to eql([])
+    end
+
+    it 'should return an enumerator when no block is given' do
+      expect(
+        numeric_arr.my_select
+      ).to be_a(Enumerator)
+    end
+
+    it 'should return an empty array when an empty block is passed' do
+      expect(
+        numeric_arr.my_select do
+        end
+      ).to eql([])
+    end
+  end
+
+
 end
