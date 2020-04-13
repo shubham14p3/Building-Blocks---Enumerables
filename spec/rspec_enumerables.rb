@@ -220,6 +220,37 @@ RSpec.describe 'Enumerable' do
       expect(count).to eql(0)
     end
   end
+  
+  describe '#my_inject' do
+    it 'should return the result of accumulating all the return values from the given block' do
+      result = numeric_arr.my_inject do |memo, el|
+        memo + el
+      end
+      expect(result).to eql(21)
+    end
 
+    it 'should return the result of accumulating all the return values from the given block using an initial value' do
+      result = numeric_arr.my_inject(1) do |memo, el|
+        memo + el
+      end
+      expect(result).to eql(22)
+    end
 
+    it 'should return the result of accumulating all the return values from the given symbol' do
+      result = numeric_arr.my_inject(:+)
+      expect(result).to eql(21)
+    end
+
+    it 'should return the result of accumulating all the return values from the given symbol using an initial value' do
+      result = numeric_arr.my_inject(1, :+)
+      expect(result).to eql(22)
+    end
+
+    it 'should only yield elements to the block when both a symbol and a block are given' do
+      result = numeric_arr.my_inject(4, :+) do |memo, el|
+        memo * el
+      end
+      expect(result).to eql(2880)
+    end
+  end
 end
