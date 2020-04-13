@@ -190,5 +190,36 @@ RSpec.describe 'Enumerable' do
     end
   end
 
+  describe '#my_count' do
+    it 'should return the number of elements that pass the validation given inside the block' do
+      count = numeric_arr.my_count do |el|
+        el > 4
+      end
+      expect(count).to eql(2)
+    end
+
+    it 'should return the number of elements that are equal to the argument' do
+      count = numeric_arr.my_count(3)
+      expect(count).to eql(1)
+    end
+
+    it 'should not yield elements to the block when both an argument and a block are given' do
+      count = numeric_arr.my_count(3) do |_el|
+        false
+      end
+      expect(count).to eql(1)
+    end
+
+    it 'should return the number of elements of the array when neither an argument and a block are not given' do
+      count = numeric_arr.my_count
+      expect(count).to eql(6)
+    end
+
+    it 'should return zero when an empty array calls the method' do
+      count = [].my_count
+      expect(count).to eql(0)
+    end
+  end
+
 
 end
