@@ -84,5 +84,38 @@ RSpec.describe 'Enumerable' do
     end
   end
 
+  describe '#my_all?' do
+    it 'should test equality with the argument when an argument is passed' do
+      expect(
+        numeric_arr.my_all?(Integer)
+      ).to eql(true)
+    end
+
+    it 'should return false if one of the elements is not equal to the argument' do
+      expect(
+        [1, 2, 4, 'hello'].my_all?(Integer)
+      ).not_to eql(true)
+    end
+
+    it 'should not yield elements to the block when both an argument and a block are given' do
+      expect(
+        numeric_arr.my_all?(Integer) do
+          false
+        end
+      ).to eql(true)
+    end
+
+    it 'should return true if all elements in the array are truthy, when no block and no argument are given' do
+      expect(
+        numeric_arr.my_all?
+      ).to eql(true)
+    end
+
+    it 'should return false if at least one element in the array is falsey, when no block and no argument are given' do
+      expect(
+        [1, 2, 3, nil].my_all?
+      ).not_to eql(true)
+    end
+  end
 
 end
