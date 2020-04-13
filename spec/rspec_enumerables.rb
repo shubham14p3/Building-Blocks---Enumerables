@@ -220,7 +220,7 @@ RSpec.describe 'Enumerable' do
       expect(count).to eql(0)
     end
   end
-  
+
   describe '#my_inject' do
     it 'should return the result of accumulating all the return values from the given block' do
       result = numeric_arr.my_inject do |memo, el|
