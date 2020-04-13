@@ -223,6 +223,29 @@ RSpec.describe 'Enumerable' do
     end
   end
 
+  describe '#my_map' do
+    it 'should send the array to the proc, when both a proc and block are given' do
+      res = numeric_arr.my_map(my_proc) do |element|
+        element - 1
+      end
+      expect(res).to eql([2, 4, 6, 8, 10, 12])
+    end
+
+    it 'should return an Enumerator when neither a block or a proc are given' do
+      expect(
+        numeric_arr.my_map
+      ).to be_a(Enumerator)
+    end
+
+    it 'should return an empty array when the sender is an empty array' do
+      expect(
+        [].my_map do
+          true
+        end
+      ).to eql([])
+    end
+  end
+
   describe '#my_inject' do
     it 'should return the result of accumulating all the return values from the given block' do
       result = numeric_arr.my_inject do |memo, el|
